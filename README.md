@@ -68,7 +68,7 @@
 
 # Requirements
 
-Before running the code locally or on a SLURM cluster, please ensure you have the necessary dependencies installed. For detailed instructions on setting up the environment look at the sections below. In order to run the code and created models, refer to the [Training & Testing](#training--testing) section.
+Before running the code locally or on a SLURM cluster, please ensure the necessary dependencies are installed. For detailed instructions on setting up the environment look at the sections below. In order to run the code and created models, refer to the [Training & Testing](#training--testing) section.
 
 ## Using Python with requirements.txt
 
@@ -107,7 +107,7 @@ Before running the code locally or on a SLURM cluster, please ensure you have th
      pip install fiftyone
      ```
 
-   - Ensure all provided data dependencies are available and accessible within your environment.
+   - Ensure all provided data dependencies are available and accessible within the environment.
 
 3. **Running the Code:**
 
