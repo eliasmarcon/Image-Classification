@@ -22,6 +22,7 @@
           <li><a href="#using-python-with-requirementstxt">Using Python with requirements txt file</a></li>
           <li><a href="#using-conda-on-a-slurm-cluster">Using Conda on a SLURM Cluster</a></li>
       </ol>
+    <li><a href="#file-structure">File Structure</a></li>
     <li><a href="#dataset">Dataset</a></li>
       <ol>
         <li><a href="#data-acquisition">Data Acquisition</a></li>
@@ -112,6 +113,34 @@ Before running the code locally or on a SLURM cluster, please ensure you have th
 
    - in the `run_cluster.sh` and `run_cluster_sets.sh` file the created conda environment is activated, used and then after the job is done, deactivated.
 
+# File Structure
+
+The file structure of this repository is designed to keep things organized and accessible, allowing for easy navigation and efficient project management.
+
+```
+
+├── dataset/                # All files for every category
+│   ├── Axe/                # Raw dataset files for Axe category
+│   ├── Axe_augmented/      # Augmented dataset files for Axe category
+│   ├── Book/               # Raw dataset files for Book category
+│   ├── Hammer/             # Raw dataset files for Hammer category
+│   ├── Hammer_augmented/   # Augmented dataset files for Hammer category
+├── parameters/             # Hyperparameter sets for model configurations
+├── readme_images/          # Images used in the README documentation
+├── saved_models/           # Directory containing the best saved model
+├── src/                    # Source code directory
+│   ├── dataset/            # Scripts for creating and manipulating data
+│   ├── models/             # Model architecture files
+│   ├── pipeline/           # Scripts for logging, metrics, training, and testing
+├── testing_dataset/        # Dataset used for model testing
+│   ├── Axe/                # Testing files for Axe category
+│   ├── Book/               # Testing files for Book category
+│   ├── Hammer/             # Testing files for Hammer category
+├── clean_runs.csv          # Log of runs and results
+```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 # Dataset
 
 This section provides an overview of the steps taken to prepare a balanced dataset for this computer vision project. The dataset contains images of three classes: Hammer, Axe, and Book from the Open Images V7 dataset.
@@ -135,15 +164,17 @@ The initial dataset was sourced from the fiftyone library, which provides access
 After filtering and exporting, the dataset was structured into a directory tree suitable for image classification tasks. The structure is as follows:
 
     dataset/
-        ├── Hammer/
         ├── Axe/
-        └── Book/
+        ├── Axe_augmented/
+        ├── Book/
+        ├── Hammer/
+        └── Hammer_augmented/
 
 Downloaded Images:
 
-- **Hammer**: Contains images of various types of hammers.
 - **Axe**: Contains images of different kinds of axes.
 - **Book**: Contains images of books, which initially were overrepresented in the dataset.
+- **Hammer**: Contains images of various types of hammers.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -161,13 +192,13 @@ To address this imbalance and ensure fair representation of each class, the numb
 
 ## Image Formats and Resizing/Padding
 
-The images in the dataset come in various formats. Each category includes images with different resolutions and aspect ratios, which is typical for datasets sourced from diverse origins. To ensure consistency and compatibility with the VGG model, all images are resized/padded to 224x224 pixels. This resizing/padding standardizes the input size, adhering to the requirements of the VGG model, which expects images of this dimension for optimal performance. Resizing/padding all images to 224x224 pixels ensures uniformity across the dataset, facilitating more effective training and evaluation of the VGG model.
+The images in the dataset come in various formats. Each category includes images with different resolutions and aspect ratios, which is typical for datasets sourced from diverse origins. To ensure consistency and compatibility with the all models, all images are resized/padded to 224x224 pixels. This resizing/padding standardizes the input size, adhering to the requirements of all models, which expects images of this dimension for optimal performance. Resizing/padding all images to 224x224 pixels ensures uniformity across the dataset, facilitating more effective training and evaluation of the VGG model.
 
 Summary of Image Formats:
 
-- Hammer: 113 distinct formats
 - Axe: 119 distinct formats
 - Book: 1457 distinct formats
+- Hammer: 113 distinct formats
 
 A sample of the resized/padded images can be seen here:
 
